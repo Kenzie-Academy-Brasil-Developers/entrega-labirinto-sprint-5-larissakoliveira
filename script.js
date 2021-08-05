@@ -1,7 +1,7 @@
 const body = document.getElementsByTagName('body')[0]
 const mainLabirinto = document.getElementById('labirinto')
 
-const map = [
+let map = [
     "WWWWWWWWWWWWWWWWWWWWW",
     "W   W     W     W W W",
     "W W W WWW WWWWW W W W",
@@ -19,40 +19,55 @@ const map = [
     "WWWWWWWWWWWWWWWWWWWWW",
 ];
 
-
-function createLines(){
-
+let createLabyrinth = ()=>{
+    
     for(let i = 0; i < map.length; i++){
-        let createBigDiv = document.createElement('div')
+        createBigDiv = document.createElement('div')
         createBigDiv.classList.add('bigDiv')
         mainLabirinto.appendChild(createBigDiv)
+
         for(let j = 0; j < map[i].length; j++){
             let createSmallDiv = document.createElement('div')
             createSmallDiv.classList.add('smallDiv')
-         //   createSmallDiv[9][0].classList.remove('smallDiv')
-         //   createSmallDiv[9][map[9].length-1].classList.remove('smallDiv')
-         //   createSmallDiv[9][0].classList.add('exceptions')
-          //  createSmallDiv[9][map[9].length-1].classList.add('exceptions')
             createBigDiv.appendChild(createSmallDiv)
-        if(map[i][j] === "W"){
-            createSmallDiv.style.backgroundColor = 'blue'
-        }else{
-            createSmallDiv.style.backgroundColor = 'white'
 
-        }
+            if(map[i][j] === "S"){
+                let item = document.createElement('img')
+                item.src = 'patin'
+                createSmallDiv.appendChild(item)
+            }
+            if(map[i][j] === "W"){
+                createSmallDiv.style.backgroundColor = 'blue'
+            } 
+            else{
+                createSmallDiv.style.backgroundColor = 'white'
+            }
         }
     }
     body.appendChild(mainLabirinto)
     return createBigDiv
 }
 
+createLabyrinth()
 
-createLines()
+let boxTop = 270;
+let boxLeft = 0;
 
+document.addEventListener('keydown', (event) =>{
+    let duck = document.getElementsByTagName('img')[0]
+    let keyName = event.key
 
-// voce vai usar esse array como base, onde cada string daí é uma linha do seu labirinto, então um loop aninhado pra poder percorrer, cada posição da string uma div, onde for vazia vai ser caminho, onde for W de wall, vai ser parede
+        if(keyName === 'ArrowUp'){
+            boxTop -= 30
+        }if(keyName === 'ArrowDown'){
+            boxTop += 30
+        }if(keyName === 'ArrowRight'){
+            boxLeft += 30
+        }if(keyName === 'ArrowLeft'){
+            boxLeft -= 30
+        }
 
-// e depois seu bichinho/item/algo vai iniciar no S e tem que percorrer os vazios até chegar no F
+    duck.style.left = boxLeft + 'px'
+    duck.style.top = boxTop + 'px'
+})
 
-// Faça com que cada célula do labirinto seja um DIV.
-// Faça de cada linha do labirinto um DIV usando "display: flex;"
