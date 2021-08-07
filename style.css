@@ -1,21 +1,22 @@
-
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, article {
-	/* margin: 0; */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p {
 	padding: 0;
 	border: 0;
-	font: inherit;
-	vertical-align: baseline;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 img{
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
+    width: 14px;
+    height: 19px;
 }
 
 
 html, body{
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
 }
 
@@ -23,7 +24,7 @@ h1{
     text-align: center;
     font-weight: bold;
     font-family: 'Yeon Sung', cursive;
-    font-size: larger;
+    font-size: large;
 }
 
 body{
@@ -34,25 +35,23 @@ body{
     font-size: large;
 }
 
-
-
 .bigDiv{
     display: flex;
-    height: 15px;
+    height: 19px;
     width: 70%;
 }
 
 .smallDiv{
-    height: 15px;
-    width: 15px;
+    height: 19px;
+    width: 19px;
 }
 
 #restart{
     background-color: black;
     color: white;
-    padding: 5px;
+    padding: 3px;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
 }
@@ -61,14 +60,13 @@ body{
     display: none;
 }
 
-
 .victory{
     height: 55px;
-    width: 50%;
+    width: 40%;
     text-align: center;
     z-index: 3;
     position: absolute;
-    background: linear-gradient(blue, cyan, navy);
+    background: linear-gradient(rgb(243, 95, 51), orange);
     font-weight: bold;
     line-height: center;
     font-size: large;
@@ -77,11 +75,30 @@ body{
 }
 
 
+@media (min-width: 450px){
+    .bigDiv{
+        height: 20px;
+        width: 85%;
+    }
+
+    .smallDiv{
+        height: 20px;
+        width: 20px;
+    }
+
+    img{
+        width: 18px;
+        height: 20px;
+    }
+}
+
+
 @media (min-width: 768px){
     body{
         display:flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
     }
     .bigDiv{
         height: 30px;
@@ -97,4 +114,13 @@ body{
         width: 30px;
         height: 30px;
     }
+
+    #restart{
+        padding: 8px;
+    }
+
+    h1{
+        font-size: larger;
+    }
+ 
 }
