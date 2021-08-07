@@ -58,63 +58,71 @@ let createLabyrinth = ()=>{
 
 createLabyrinth()
 
-                //primeiro pega o proximo elemento no html pelo queryselector
-               //verificar se ele é parede
-               //ses nao for, fazer o append, se for nao fazer nada
+
+let ducksPosition;
 
 document.addEventListener('keydown', (event) => {
-        let ducksPosition = item.parentElement.dataset.lineColumn
+        ducksPosition = item.parentElement.dataset.lineColumn
         ducksPosition = ducksPosition.split('-')
-        console.log(ducksPosition + 'ducksposition')
         let keyName = event.key
-        let linha = ducksPosition[0]
-        console.log(linha + 'linha')
-        let coluna = ducksPosition[1]
-        console.log(coluna + 'coluna')
+        let line = ducksPosition[0]
+        let column = ducksPosition[1]
 
             if(keyName === 'ArrowUp'){
-            //     coluna--
-            //     console.log(coluna)
-            //     let proximap = document.querySelector(`[data-line-column = "${linha}-${coluna}"]`)
-            //   // proximap.value === 'W'
-
-            //     console.log(proximap.dataset.type)
-   
-              createSmallDiv.appendChild(item)
-            }if(keyName === 'ArrowDown'){
-
-            }if(keyName === 'ArrowRight'){
-                coluna++
-                let proximap = document.querySelector(`[data-line-column = "${linha}-${coluna}"]`)
-                if(proximap.dataset.type === 'way'){
-                    console.log(item)
-                    proximap.appendChild(item)
-                    console.log(proximap)
+                line--
+                let nextStep = document.querySelector(`[data-line-column = "${line}-${column}"]`)
+                if(nextStep.dataset.type === 'way'){
+                    nextStep.appendChild(item)
                 }
-                console.log(proximap.value)
+            }if(keyName === 'ArrowDown'){
+                line++
+                let nextStep = document.querySelector(`[data-line-column = "${line}-${column}"]`)
+                if(nextStep.dataset.type === 'way'){
+                    nextStep.appendChild(item)
+                }
+            }if(keyName === 'ArrowRight'){
+                column++
+                let nextStep = document.querySelector(`[data-line-column = "${line}-${column}"]`)
+                if(nextStep.dataset.type === 'way'){
+                    nextStep.appendChild(item)
+                }
             }if(keyName === 'ArrowLeft'){
-                
+                column--
+                let nextStep = document.querySelector(`[data-line-column = "${line}-${column}"]`)
+                if(nextStep.dataset.type === 'way'){
+                    nextStep.appendChild(item)
+                }
             }
+ 
+         //   victory(ducksPosition)
+})
+
+
+
+// let victory = (position) =>{
+// let position = item.parentElement.dataset.lineColumn
+//     if(position === position[8][20]){
+//        return alert('parabens')
+//     } 
+  //  let position = item.parentElement.dataset.lineColumn
+   // console.log(position + 'position')
+  //  position = position.split('-')
+  //  position = position[9][0]
+// }
+
+
+button.addEventListener('click', ()=>{
+    let start = document.querySelector(`[data-line-column = "${9}-${0}"]`)
+    start.appendChild(item)
 })
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-   //    win()
-    // duck.style.left = boxLeft + 'px'
-    // duck.style.top = boxTop + 'px'
-
-
+//    win()
+// duck.style.left = boxLeft + 'px'
+// duck.style.top = boxTop + 'px'
 // let boxTop = 270;
 // let boxLeft = 0;
 //let duck = document.getElementsByTagName('img')[0]
@@ -123,18 +131,6 @@ document.addEventListener('keydown', (event) => {
 //     duck.style.left = boxLeft + 'px'
 //     duck.style.top = boxTop + 'px'
 // })
-
-
-// let updateMap = () =>{
-//     for(let i = 0; i < map.lengtsmallDivh; i++){
-//         for(let j = 0; j < map[i].length; j++){
-//             map.push()
-//         }
-//     }
-// }
-
-
-
 // //CONDICAO DE VITORIA SE CHEGAR NO 240, 600
 
 // let win = () =>{
@@ -142,12 +138,8 @@ document.addEventListener('keydown', (event) => {
 //         alert('voce ganhou')
 //     }
 // }
-
-
-
 // document.addEventListener('keydown', (event) =>{
 //     let keyName = event.key
-
 //         if(keyName === 'ArrowUp' && boxTop > 0){
 //             boxTop -= 30
 //         }if(keyName === 'ArrowDown' && boxTop < 420){
