@@ -10,11 +10,19 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, article {
 img{
     width: 17px;
     height: 17px;
-    position: absolute;
-    top: 270px;
     border-radius: 50%;
-    left: 0;
+ 
+/*  animation-duration: 100ms;*/
 }
+
+/* @keyframes slideRight {
+    from {margin-left: -33px;}
+    to {margin-left: 0;}
+    }
+    .slideRight {
+        animation-name: slideRight;
+    } */
+
 main{
     position:relative;
 }
@@ -51,6 +59,15 @@ main{
 .smallDiv{
     height: 15px;
     width: 15px;
+}
+
+#restart{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 
