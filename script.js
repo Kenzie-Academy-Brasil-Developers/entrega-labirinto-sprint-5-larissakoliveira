@@ -1,6 +1,7 @@
 const body = document.getElementsByTagName('body')[0]
 const mainLabirinto = document.getElementById('labirinto')
 const button = document.getElementById('restart')
+const win = document.getElementById('victory')
 
 let map = [
     "WWWWWWWWWWWWWWWWWWWWW",
@@ -44,11 +45,12 @@ let createLabyrinth = ()=>{
                 createSmallDiv.appendChild(item)
             }
             if(map[i][j] === "W"){
-                createSmallDiv.style.background = 'blue'
+                createSmallDiv.style.background = 'green'
                 createSmallDiv.dataset.type = `wall`
             } 
             else{
                 createSmallDiv.dataset.type = `way`
+                createSmallDiv.style.background = 'cyan'
             }
         }
     }
@@ -67,6 +69,7 @@ document.addEventListener('keydown', (event) => {
         let keyName = event.key
         let line = ducksPosition[0]
         let column = ducksPosition[1]
+
 
             if(keyName === 'ArrowUp'){
                 line--
@@ -93,65 +96,25 @@ document.addEventListener('keydown', (event) => {
                     nextStep.appendChild(item)
                 }
             }
- 
-         //   victory(ducksPosition)
+        victory(line, column)
 })
 
 
-
-// let victory = (position) =>{
-// let position = item.parentElement.dataset.lineColumn
-//     if(position === position[8][20]){
-//        return alert('parabens')
-//     } 
-  //  let position = item.parentElement.dataset.lineColumn
-   // console.log(position + 'position')
-  //  position = position.split('-')
-  //  position = position[9][0]
-// }
+let victory = (line, column) => {
+    if(Number(line) === 8 && Number(column) === 20){
+        win.classList.replace('hidden', 'victory')
+    }
+}
 
 
 button.addEventListener('click', ()=>{
     let start = document.querySelector(`[data-line-column = "${9}-${0}"]`)
     start.appendChild(item)
+    win.classList.replace('victory', 'hidden')
 })
 
 
 
 
-
-//    win()
-// duck.style.left = boxLeft + 'px'
-// duck.style.top = boxTop + 'px'
-// let boxTop = 270;
-// let boxLeft = 0;
-//let duck = document.getElementsByTagName('img')[0]
-
-// restart.addEventListener('click', ()=>{
-//     duck.style.left = boxLeft + 'px'
-//     duck.style.top = boxTop + 'px'
-// })
-// //CONDICAO DE VITORIA SE CHEGAR NO 240, 600
-
-// let win = () =>{
-//     if(boxTop === 240 && boxLeft === 600){
-//         alert('voce ganhou')
-//     }
-// }
-// document.addEventListener('keydown', (event) =>{
-//     let keyName = event.key
-//         if(keyName === 'ArrowUp' && boxTop > 0){
-//             boxTop -= 30
-//         }if(keyName === 'ArrowDown' && boxTop < 420){
-//             boxTop += 30
-//         }if(keyName === 'ArrowRight' && boxLeft < 600){
-//             boxLeft += 30
-//         }if(keyName === 'ArrowLeft' && boxLeft > 0){
-//             boxLeft -= 30
-//         }
-//     //    win()
-//     // duck.style.left = boxLeft + 'px'
-//     // duck.style.top = boxTop + 'px'
-// })
 
 
